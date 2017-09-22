@@ -38,3 +38,43 @@ class Notebook:
                 return note
         return None
 
+class Menu:
+    def __init__(self):
+        self.notebook = Notebook()
+        self.choices = {
+                         "1" : self.show_notes,
+                         "2" : self.search_notes,
+                         "3" : self.add_note,
+                         "4" : self.modify_note,
+                         "5" : self._notes,
+                       }
+
+    def display_menu(self):
+        print (" 1.- Show all notes \n2.- Search notes \n3.- Add note \n4.-Modify note \n5.- Quit")
+
+    def run(self):
+        while True:
+            self.display_menu()
+            choise = input("Enter option: ")
+            action = self.choices.get(choise)
+            if action:
+                action()
+            else:
+                print("{0} is not a valid choice".format(choice))
+
+    def show_notes(self, notes=None):
+        if not notes:
+            notes = self.notebook.notes
+        for note in notes:
+            print("{0}: {1}\n{2}".format(note.id, note.tags, note.memo))
+
+    def search_notes(self):
+        filter = input("Search for: ")
+        notes = self.notebook.search(filter)
+        self.show_notes(notes)
+
+    #TODO: Falta terminar el ejercicio
+
+
+
+
