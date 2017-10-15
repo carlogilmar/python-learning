@@ -4,6 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    print ("WebServer Ok")
     return 'Hello, Flask!'
 
 @app.route('/hello/<name>')
